@@ -1,0 +1,691 @@
+{
+  "title": "Проверка распознавания автомобилей на 20 интернет-фотографиях",
+  "tested_at_utc": "2026-11-08T14:05:08.539918+00:00",
+  "application": "http://127.0.0.1:7860/",
+  "checkpoint_sha256": "ce711be712fc8417531460022d6f6bd33e71833f4d45d8f940e7bfe1ce67cbdf",
+  "recognition_class_count": 85,
+  "selection": {
+    "seed": 20261108,
+    "supported": [
+      "Hyundai Santa Fe",
+      "Mazda CX-3",
+      "Citroen Grand C4 Picasso",
+      "Ford Focus",
+      "Kia Rio",
+      "Porsche Panamera",
+      "Audi A3",
+      "Volkswagen Passat",
+      "Land Rover Discovery Sport",
+      "Audi S5",
+      "Volkswagen Beetle",
+      "BMW 1 Series",
+      "Audi A1",
+      "Jeep Renegade",
+      "Volkswagen Touareg"
+    ],
+    "outside_classes": [
+      "Lada Vesta",
+      "Hyundai Solaris",
+      "Toyota Camry",
+      "Tesla Model 3",
+      "Kia Ceed"
+    ],
+    "protocol": "Preselected model classes; first clearly labelled usable photo per model, before any prediction. Browser copy and paste only, no saving of source images. Recognition only; no price accuracy without mileage and price ground truth."
+  },
+  "method_ru": [
+    "15 семейств автомобилей случайно выбраны из 85 классов checkpoint с фиксированным seed 20261108. Ещё 5 семейств отсутствуют среди этих классов и проверяются отдельно.",
+    "Фотографии подобраны по подписанным страницам Wikimedia Commons до просмотра предсказания для соответствующего снимка. Это удобная выборка фотографий, а не случайная выборка всех изображений интернета.",
+    "Включены разные поколения, передние, боковой и задние ракурсы. Ошибочные предсказания не заменялись удачными снимками.",
+    "Из отображённого браузером превью копировались пиксели изображения в буфер обмена PNG, затем выполнялась вставка через Cmd+V на сайте и нажатие «Распознать автомобиль». Файлы исходных фотографий на диск не сохранялись. Обычный кэш браузера не контролировался.",
+    "Использовались превью шириной 960 пикселей, размеры указаны для каждого случая. Сервер применял исходную подготовку фото с удалением фона и приведением к квадрату.",
+    "Для формы заданы технические значения 2017 год и 85000 км; распознающая нейросеть получает только изображение. Цены на основе этих значений не оценивались.",
+    "Верность модели проверялась по названию семейства в источнике. Цвет и кузов оценивались только там, где метка зафиксирована до предсказания; null означает отсутствие оценки.",
+    "Уверенность взята из интерфейса и округлена до целого процента. Это оценка softmax, а не измеренная вероятность правильного ответа.",
+    "Контроль: повторная вставка фотографии Kia Ceed кнопкой «Вставить фото» дала те же название, цвет, кузов, уверенность и тройку вариантов, что и вставка с клавиатуры."
+  ],
+  "metrics": {
+    "photos_tested": 20,
+    "supported_classes": {
+      "tested": 15,
+      "top1_correct": 2,
+      "top1_percent": 13.33,
+      "top3_correct": 6,
+      "top3_percent": 40.0,
+      "color": {
+        "correct": 7,
+        "labelled": 8,
+        "percent": 87.5
+      },
+      "body": {
+        "correct": 7,
+        "labelled": 13,
+        "percent": 53.85
+      }
+    },
+    "outside_classes": {
+      "tested": 5,
+      "foreign_model_returned": 5,
+      "confidence_percent_range": [
+        5,
+        12
+      ]
+    },
+    "color_all_labelled": {
+      "correct": 9,
+      "labelled": 10,
+      "percent": 90.0
+    },
+    "body_all_labelled": {
+      "correct": 7,
+      "labelled": 18,
+      "percent": 38.89
+    },
+    "browser_console_errors_or_warnings": 0,
+    "price_accuracy_tested": false
+  },
+  "limitations_ru": [
+    "20 снимков, один снимок на семейство: результат не оценивает точность на всём интернете и не показывает разброс внутри одного класса.",
+    "Наличие семейства среди классов не означает, что конкретное поколение или региональный вариант представлены в обучении. В коде обучения отбираются машины 2013–2020 годов и преимущественно вид спереди; в этой проверке есть другие поколения и ракурсы.",
+    "Цветовые метки малочисленны; серый и серебристый могут быть неоднозначны при разном освещении.",
+    "Для пяти машин вне списка классов метрика top1 не смешивается с метрикой 15 поддерживаемых семейств. Без специального отказа от распознавания классификатор выбирает один из известных классов.",
+    "Точность цены не измерена: нет независимых фактических цен и пробегов этих автомобилей.",
+    "По этому тесту нельзя установить причину ошибок. Несовпадение с обучающими фото, удаление фона, ракурс и особенности обучения требуют отдельной проверки.",
+    "Веса модели, алгоритм и код сайта в рамках этой проверки не изменялись."
+  ],
+  "clipboard_control": {
+    "sourceCase": 20,
+    "method": "Вставить фото button, same clipboard image as keyboard paste",
+    "result": {
+      "body": "Hatchback",
+      "color": "Red",
+      "confidence": "Уверенность распознавания: 12%. Результат неуверенный — обязательно проверь модель.",
+      "model": "Toyota Prius",
+      "top3": [
+        "Toyota Prius",
+        "Volkswagen Golf",
+        "Ford Focus"
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": 1,
+      "truth": "Hyundai Santa Fe",
+      "supported": true,
+      "angle": "front-three-quarter",
+      "truthBody": "SUV",
+      "source": "https://commons.wikimedia.org/wiki/File:Front_Passenger_Side_-_2014_Hyundai_Santa_Fe_Limited_(15659647273).jpg",
+      "truthColor": null,
+      "sourceTitle": "File:Front Passenger Side - 2014 Hyundai Santa Fe Limited (15659647273).jpg",
+      "copiedSize": {
+        "height": 633,
+        "width": 960
+      },
+      "result": {
+        "body": "Hatchback",
+        "color": "Purple",
+        "confidence": 5,
+        "model": "Audi A5 Cabriolet",
+        "top3": [
+          "Audi A5 Cabriolet",
+          "Porsche 911",
+          "Peugeot 208"
+        ]
+      },
+      "top1_correct": false,
+      "top3_correct": false,
+      "color_correct": null,
+      "body_correct": false
+    },
+    {
+      "id": 2,
+      "truth": "Mazda CX-3",
+      "supported": true,
+      "angle": "front",
+      "truthBody": "SUV",
+      "source": "https://commons.wikimedia.org/wiki/File:2016_Mazda_CX-3_GT_front_(20417088803).jpg",
+      "truthColor": null,
+      "sourceTitle": "File:2016 Mazda CX-3 GT front (20417088803).jpg",
+      "copiedSize": {
+        "height": 720,
+        "width": 960
+      },
+      "result": {
+        "body": "SUV",
+        "color": "White",
+        "confidence": 93,
+        "model": "Mazda CX-3",
+        "top3": [
+          "Mazda CX-3",
+          "Mercedes-Benz S Class",
+          "Jaguar F-Type"
+        ]
+      },
+      "top1_correct": true,
+      "top3_correct": true,
+      "color_correct": null,
+      "body_correct": true
+    },
+    {
+      "id": 3,
+      "truth": "Citroen Grand C4 Picasso",
+      "supported": true,
+      "angle": "front-three-quarter",
+      "truthColor": "Blue",
+      "truthBody": "MPV",
+      "source": "https://commons.wikimedia.org/wiki/File:2014_Citroën_Grand_C4_Picasso_in_Teles_Blue,_front_right,_06-06-2025.jpg",
+      "sourceTitle": "File:2014 Citroën Grand C4 Picasso in Teles Blue, front right, 06-06-2025.jpg",
+      "copiedSize": {
+        "height": 560,
+        "width": 960
+      },
+      "result": {
+        "body": "Hatchback",
+        "color": "Blue",
+        "confidence": 5,
+        "model": "Toyota Prius",
+        "top3": [
+          "Toyota Prius",
+          "Volkswagen Tiguan",
+          "Vauxhall Corsa"
+        ]
+      },
+      "top1_correct": false,
+      "top3_correct": false,
+      "color_correct": true,
+      "body_correct": false
+    },
+    {
+      "id": 4,
+      "truth": "Ford Focus",
+      "supported": true,
+      "angle": "front-three-quarter",
+      "source": "https://commons.wikimedia.org/wiki/File:Ford_Focus_2016-09-22_11-46-01.jpg",
+      "truthColor": null,
+      "truthBody": null,
+      "sourceTitle": "File:Ford Focus 2016-09-22 11-46-01.jpg",
+      "copiedSize": {
+        "height": 609,
+        "width": 960
+      },
+      "result": {
+        "body": "Hatchback",
+        "color": "White",
+        "confidence": 5,
+        "model": "Audi A1",
+        "top3": [
+          "Audi A1",
+          "Ford Focus",
+          "Toyota Prius"
+        ]
+      },
+      "top1_correct": false,
+      "top3_correct": true,
+      "color_correct": null,
+      "body_correct": null
+    },
+    {
+      "id": 5,
+      "truth": "Kia Rio",
+      "supported": true,
+      "angle": "front-three-quarter",
+      "truthColor": "White",
+      "truthBody": "Hatchback",
+      "source": "https://commons.wikimedia.org/wiki/File:2015_KIA_Rio_3_EcoDynamics_CRDi_-_1396cc_1.4_(90PS)_Diesel_-_Clear_White_-_02-2024,_Front.jpg",
+      "sourceTitle": "File:2015 KIA Rio 3 EcoDynamics CRDi - 1396cc 1.4 (90PS) Diesel - Clear White - 02-2024, Front.jpg",
+      "copiedSize": {
+        "height": 574,
+        "width": 960
+      },
+      "result": {
+        "body": "Hatchback",
+        "color": "White",
+        "confidence": 8,
+        "model": "Volkswagen Golf",
+        "top3": [
+          "Volkswagen Golf",
+          "Audi A1",
+          "Toyota Prius"
+        ]
+      },
+      "top1_correct": false,
+      "top3_correct": false,
+      "color_correct": true,
+      "body_correct": true
+    },
+    {
+      "id": 6,
+      "truth": "Porsche Panamera",
+      "supported": true,
+      "angle": "front-three-quarter",
+      "source": "https://commons.wikimedia.org/wiki/File:Porsche_Panamera_(front-side_view).jpg",
+      "truthColor": null,
+      "truthBody": null,
+      "sourceTitle": "File:Porsche Panamera (front-side view).jpg",
+      "copiedSize": {
+        "height": 636,
+        "width": 960
+      },
+      "result": {
+        "body": "Coupe",
+        "color": "Black",
+        "confidence": 9,
+        "model": "Jaguar F-Type",
+        "top3": [
+          "Jaguar F-Type",
+          "Porsche 911",
+          "Porsche Panamera"
+        ]
+      },
+      "top1_correct": false,
+      "top3_correct": true,
+      "color_correct": null,
+      "body_correct": null
+    },
+    {
+      "id": 7,
+      "truth": "Audi A3",
+      "supported": true,
+      "angle": "front-three-quarter",
+      "source": "https://commons.wikimedia.org/wiki/File:Audi_A3_SportBack_2017_(front).jpg",
+      "truthColor": "Red",
+      "truthBody": "Hatchback",
+      "result": {
+        "body": "Convertible",
+        "color": "Red",
+        "confidence": 13,
+        "model": "Audi A5 Cabriolet",
+        "top3": [
+          "Audi A5 Cabriolet",
+          "Audi S5",
+          "Audi A7"
+        ]
+      },
+      "copiedSize": {
+        "width": 960,
+        "height": 669
+      },
+      "top1_correct": false,
+      "top3_correct": false,
+      "color_correct": true,
+      "body_correct": false
+    },
+    {
+      "id": 8,
+      "truth": "Volkswagen Passat",
+      "supported": true,
+      "angle": "front-three-quarter",
+      "truthColor": "Grey",
+      "truthBody": "Saloon",
+      "source": "https://commons.wikimedia.org/wiki/File:Volkswagen_Passat_NMS_front_-_Tokyo_Auto_Salon_2015.jpg",
+      "sourceTitle": "File:Volkswagen Passat NMS front - Tokyo Auto Salon 2015.jpg",
+      "copiedSize": {
+        "height": 720,
+        "width": 960
+      },
+      "result": {
+        "body": "Saloon",
+        "color": "Silver",
+        "confidence": 55,
+        "model": "Volkswagen Passat",
+        "top3": [
+          "Volkswagen Passat",
+          "Citroen C4",
+          "Kia Sorento"
+        ]
+      },
+      "top1_correct": true,
+      "top3_correct": true,
+      "color_correct": false,
+      "body_correct": true
+    },
+    {
+      "id": 9,
+      "truth": "Land Rover Discovery Sport",
+      "supported": true,
+      "angle": "front",
+      "truthBody": "SUV",
+      "source": "https://commons.wikimedia.org/wiki/File:Land_Rover_Discovery_Sport_-_Front_View.jpg",
+      "truthColor": null,
+      "sourceTitle": "File:Land Rover Discovery Sport - Front View.jpg",
+      "copiedSize": {
+        "height": 540,
+        "width": 960
+      },
+      "result": {
+        "body": "SUV",
+        "color": "White",
+        "confidence": 8,
+        "model": "Land Rover Discovery",
+        "top3": [
+          "Land Rover Discovery",
+          "Land Rover Discovery Sport",
+          "Volkswagen Tiguan"
+        ]
+      },
+      "top1_correct": false,
+      "top3_correct": true,
+      "color_correct": null,
+      "body_correct": true
+    },
+    {
+      "id": 10,
+      "truth": "Audi S5",
+      "supported": true,
+      "angle": "front-three-quarter",
+      "truthColor": "White",
+      "truthBody": "Coupe",
+      "source": "https://commons.wikimedia.org/wiki/File:2009_white_Audi_S5_front.JPG",
+      "sourceTitle": "File:2009 white Audi S5 front.JPG",
+      "copiedSize": {
+        "height": 720,
+        "width": 960
+      },
+      "result": {
+        "body": "SUV",
+        "color": "White",
+        "confidence": 54,
+        "model": "Audi SQ5",
+        "top3": [
+          "Audi SQ5",
+          "Audi A7",
+          "Audi Q5"
+        ]
+      },
+      "top1_correct": false,
+      "top3_correct": false,
+      "color_correct": true,
+      "body_correct": false
+    },
+    {
+      "id": 11,
+      "truth": "Volkswagen Beetle",
+      "supported": true,
+      "angle": "rear-three-quarter",
+      "truthColor": "White",
+      "truthBody": "Hatchback",
+      "source": "https://commons.wikimedia.org/wiki/File:2015_Volkswagen_Beetle_1.8T_in_Pure_White,_Rear_Right,_08-21-2022.jpg",
+      "sourceTitle": "File:2015 Volkswagen Beetle 1.8T in Pure White, Rear Right, 08-21-2022.jpg",
+      "copiedSize": {
+        "height": 580,
+        "width": 960
+      },
+      "result": {
+        "body": "Hatchback",
+        "color": "White",
+        "confidence": 11,
+        "model": "Porsche Panamera",
+        "top3": [
+          "Porsche Panamera",
+          "Audi A1",
+          "Volkswagen Golf"
+        ]
+      },
+      "top1_correct": false,
+      "top3_correct": false,
+      "color_correct": true,
+      "body_correct": true
+    },
+    {
+      "id": 12,
+      "truth": "BMW 1 Series",
+      "supported": true,
+      "angle": "side",
+      "truthBody": "Hatchback",
+      "source": "https://commons.wikimedia.org/wiki/File:BMW_118i-F20_Side-view.JPG",
+      "truthColor": null,
+      "sourceTitle": "File:BMW 118i-F20 Side-view.JPG",
+      "copiedSize": {
+        "height": 720,
+        "width": 960
+      },
+      "result": {
+        "body": "Coupe",
+        "color": "Red",
+        "confidence": 9,
+        "model": "Volkswagen Golf",
+        "top3": [
+          "Volkswagen Golf",
+          "Porsche 911",
+          "Jaguar F-Type"
+        ]
+      },
+      "top1_correct": false,
+      "top3_correct": false,
+      "color_correct": null,
+      "body_correct": false
+    },
+    {
+      "id": 13,
+      "truth": "Audi A1",
+      "supported": true,
+      "angle": "rear-three-quarter",
+      "truthBody": "Hatchback",
+      "source": "https://commons.wikimedia.org/wiki/File:Audi_A1_1.6_TDI_Ambition_rear_20100901.jpg",
+      "truthColor": "White",
+      "sourceTitle": "File:Audi A1 1.6 TDI Ambition rear 20100901.jpg",
+      "copiedSize": {
+        "height": 447,
+        "width": 960
+      },
+      "result": {
+        "body": "Hatchback",
+        "color": "White",
+        "confidence": 9,
+        "model": "Porsche 911",
+        "top3": [
+          "Porsche 911",
+          "Volkswagen Golf",
+          "Audi A1"
+        ]
+      },
+      "top1_correct": false,
+      "top3_correct": true,
+      "color_correct": true,
+      "body_correct": true
+    },
+    {
+      "id": 14,
+      "truth": "Jeep Renegade",
+      "supported": true,
+      "angle": "rear-three-quarter",
+      "truthColor": "Red",
+      "truthBody": "SUV",
+      "source": "https://commons.wikimedia.org/wiki/File:2015_Jeep_Renegade_Latitude_(Colorado_Red),_rear_right.jpg",
+      "sourceTitle": "File:2015 Jeep Renegade Latitude (Colorado Red), rear right.jpg",
+      "copiedSize": {
+        "height": 569,
+        "width": 960
+      },
+      "result": {
+        "body": "SUV",
+        "color": "Red",
+        "confidence": 7,
+        "model": "Volkswagen Tiguan",
+        "top3": [
+          "Volkswagen Tiguan",
+          "Dacia Duster",
+          "Toyota Prius"
+        ]
+      },
+      "top1_correct": false,
+      "top3_correct": false,
+      "color_correct": true,
+      "body_correct": true
+    },
+    {
+      "id": 15,
+      "truth": "Volkswagen Touareg",
+      "supported": true,
+      "angle": "rear-three-quarter",
+      "truthBody": "SUV",
+      "source": "https://commons.wikimedia.org/wiki/File:2018_Volkswagen_Touareg_Rear_(1).jpg",
+      "truthColor": null,
+      "sourceTitle": "File:2018 Volkswagen Touareg Rear (1).jpg",
+      "copiedSize": {
+        "height": 628,
+        "width": 960
+      },
+      "result": {
+        "body": "Hatchback",
+        "color": "Blue",
+        "confidence": 5,
+        "model": "Audi S5",
+        "top3": [
+          "Audi S5",
+          "Nissan Juke",
+          "Dacia Duster"
+        ]
+      },
+      "top1_correct": false,
+      "top3_correct": false,
+      "color_correct": null,
+      "body_correct": false
+    },
+    {
+      "id": 16,
+      "truth": "Lada Vesta",
+      "supported": false,
+      "angle": "front-three-quarter",
+      "truthColor": "White",
+      "truthBody": "Saloon",
+      "source": "https://commons.wikimedia.org/wiki/File:2025_Lada_Vesta_white_front.jpg",
+      "sourceTitle": "File:2025 Lada Vesta white front.jpg",
+      "copiedSize": {
+        "height": 544,
+        "width": 960
+      },
+      "result": {
+        "body": "Hatchback",
+        "color": "White",
+        "confidence": 7,
+        "model": "Toyota Prius",
+        "top3": [
+          "Toyota Prius",
+          "Audi A6 Saloon",
+          "Audi A1"
+        ]
+      },
+      "top1_correct": null,
+      "top3_correct": null,
+      "color_correct": true,
+      "body_correct": false
+    },
+    {
+      "id": 17,
+      "truth": "Hyundai Solaris",
+      "supported": false,
+      "angle": "front-three-quarter",
+      "truthBody": "Saloon",
+      "source": "https://commons.wikimedia.org/wiki/File:Hyundai_Solaris_Sedan_(front).jpg",
+      "truthColor": null,
+      "sourceTitle": "File:Hyundai Solaris Sedan (front).jpg",
+      "copiedSize": {
+        "height": 471,
+        "width": 960
+      },
+      "result": {
+        "body": "Hatchback",
+        "color": "Silver",
+        "confidence": 5,
+        "model": "Ford Focus",
+        "top3": [
+          "Ford Focus",
+          "Toyota Prius",
+          "Audi A1"
+        ]
+      },
+      "top1_correct": null,
+      "top3_correct": null,
+      "color_correct": null,
+      "body_correct": false
+    },
+    {
+      "id": 18,
+      "truth": "Toyota Camry",
+      "supported": false,
+      "angle": "front-three-quarter",
+      "truthBody": "Saloon",
+      "source": "https://commons.wikimedia.org/wiki/File:2018_GAC-Toyota_Camry_(front).jpg",
+      "truthColor": "Red",
+      "sourceTitle": "File:2018 GAC-Toyota Camry (front).jpg",
+      "copiedSize": {
+        "height": 676,
+        "width": 960
+      },
+      "result": {
+        "body": "Coupe",
+        "color": "Red",
+        "confidence": 7,
+        "model": "Toyota Prius",
+        "top3": [
+          "Toyota Prius",
+          "Porsche 911",
+          "Vauxhall Astra"
+        ]
+      },
+      "top1_correct": null,
+      "top3_correct": null,
+      "color_correct": true,
+      "body_correct": false
+    },
+    {
+      "id": 19,
+      "truth": "Tesla Model 3",
+      "supported": false,
+      "angle": "front-three-quarter",
+      "truthBody": "Saloon",
+      "source": "https://commons.wikimedia.org/wiki/File:2019_Tesla_Model_3_Long_Range_AWD_Front.jpg",
+      "truthColor": null,
+      "sourceTitle": "File:2019 Tesla Model 3 Long Range AWD Front.jpg",
+      "copiedSize": {
+        "height": 567,
+        "width": 960
+      },
+      "result": {
+        "body": "Convertible",
+        "color": "Blue",
+        "confidence": 7,
+        "model": "Porsche 911",
+        "top3": [
+          "Porsche 911",
+          "Audi A5 Cabriolet",
+          "Porsche Panamera"
+        ]
+      },
+      "top1_correct": null,
+      "top3_correct": null,
+      "color_correct": null,
+      "body_correct": false
+    },
+    {
+      "id": 20,
+      "truth": "Kia Ceed",
+      "supported": false,
+      "angle": "front-three-quarter",
+      "truthBody": "Estate",
+      "source": "https://commons.wikimedia.org/wiki/File:2016_Kia_cee%27d_sw_3_ISG_CRDi_S-A_1.6_facelift_Front.jpg",
+      "truthColor": null,
+      "sourceTitle": "File:2016 Kia cee'd sw 3 ISG CRDi S-A 1.6 facelift Front.jpg",
+      "copiedSize": {
+        "height": 489,
+        "width": 960
+      },
+      "result": {
+        "body": "Hatchback",
+        "color": "Red",
+        "confidence": 12,
+        "model": "Toyota Prius",
+        "top3": [
+          "Toyota Prius",
+          "Volkswagen Golf",
+          "Ford Focus"
+        ]
+      },
+      "top1_correct": null,
+      "top3_correct": null,
+      "color_correct": null,
+      "body_correct": false
+    }
+  ]
+}
