@@ -1,0 +1,5 @@
+Сюда кладётся датасет DVM-CAR:
+https://figshare.com/articles/figure/DVM-CAR_Dataset/19586296/1
+
+  tables_V2.0.zip       (таблицы, можно не распаковывать)
+  Confirmed_fronts.zip  (фото спереди, не распаковывать)

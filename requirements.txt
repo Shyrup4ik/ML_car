@@ -1,0 +1,12 @@
+torch            # нейросеть (для видеокарты: pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128)
+torchvision      # ConvNeXt-Tiny и обработка фото
+scikit-learn     # вспомогательное (compare_prices.py)
+catboost         # модель цены
+optuna           # подбор гиперпараметров
+pandas
+numpy
+pillow
+matplotlib       # графики и PDF
+joblib
+rembg            # удаление фона с фото
+onnxruntime      # нужен для rembg

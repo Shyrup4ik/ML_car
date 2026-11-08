@@ -1,0 +1,18 @@
+# Датасет и обученные модели (большие файлы)
+data/*
+!data/PUT_DATASET_HERE.txt
+car_model.pt
+price_model.joblib
+otchet_*.pdf
+
+# Python / macOS
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+
+# Результаты обучения и сравнения (генерируются скриптами)
+metrics*.txt
+training_curves.png
+price_comparison.*
+catboost_info/
