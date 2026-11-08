@@ -16,3 +16,12 @@ metrics*.txt
 training_curves.png
 price_comparison.*
 catboost_info/
+
+# Локальное состояние веб-приложения
+.cache/
+.local/
+.pytest_cache/
+models/
+.env
+.env.*
+!.env.example

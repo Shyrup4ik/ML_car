@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5f7">
+  <meta name="description" content="Узнай ориентировочную стоимость автомобиля по фотографии, году выпуска и пробегу. Распознавание и подробная аналитика в одном месте.">
+  <title>AVTO — твоя машина в новых цифрах</title>
+  <link rel="icon" type="image/svg+xml" href="/static/assets/favicon.svg">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#estimate">Перейти к оценке</a>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4m-4 4 4-4 4 4M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1.5"/><path d="M9 12h6m-6 4h4"/></symbol>
+    <symbol id="i-photo" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m4 17 5-5 4 4 3-3 5 5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4L12 3Z"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5M6.5 6.5A8 8 0 0 1 20 12M4 12a8 8 0 0 0 13.5 5.5"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.01"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="wordmark" href="#top" aria-label="AVTO — на главную">avto<span>.</span></a>
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a href="#estimate">Оценить</a>
+        <a href="#possibilities">Возможности</a>
+        <a href="#method">Как это работает</a>
+      </nav>
+      <div id="server-status" class="server-status" data-state="loading" role="status"><span class="status-dot"></span><span id="server-status-text">Подготовка</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section-shell" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="tiny-spark">✦</span> НОВЫЙ ВЗГЛЯД НА СТОИМОСТЬ</p>
+        <h1>Твоя машина.<br><span>В новых цифрах.</span></h1>
+        <p class="hero-description">Одна фотография — и больше ясности.<br class="desktop-break"> Узнай стоимость автомобиля и&nbsp;посмотри, что&nbsp;на&nbsp;неё влияет.</p>
+        <div class="hero-actions"><a class="button primary" href="#estimate">Оценить автомобиль <svg class="icon"><use href="#i-arrow"/></svg></a><a class="text-link" href="#method">Как это работает <span>↗</span></a></div>
+        <div class="hero-assurances"><span><svg class="icon"><use href="#i-check"/></svg> Без регистрации</span><span><svg class="icon"><use href="#i-check"/></svg> Вся аналитика на сайте</span></div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="visual-halo"></div>
+        <span class="visual-label"><span class="status-dot"></span> Видит детали. Считает стоимость.</span>
+        <img class="hero-car hero-car--photo" src="/static/assets/hero-car.png" width="1536" height="1024" alt="" fetchpriority="high">
+        <div class="visual-chip chip-one"><span class="chip-icon"><svg class="icon"><use href="#i-spark"/></svg></span><div><span class="chip-caption">КОМПЬЮТЕРНОЕ ЗРЕНИЕ</span><strong>Модель. Цвет. Кузов.</strong></div><span class="chip-check">✓</span></div>
+        <div class="visual-chip chip-two"><span class="mini-chart"><i></i><i></i><i></i><i></i><i></i></span><div><span class="chip-caption">ДАННЫЕ, А НЕ ДОГАДКИ</span><strong>Цена с контекстом</strong></div></div>
+        <span class="visual-caption">Фотография → распознавание → оценка</span>
+      </div>
+    </section>
+
+    <div class="intro-strip section-shell"><p>Больше, чем просто цена.</p><div><span>Распознавание по фото</span><span>Ручная проверка</span><span>Подробная аналитика</span></div></div>
+
+    <section class="estimate-section section-shell" id="estimate" aria-labelledby="estimate-title">
+      <div class="section-heading"><div><p class="eyebrow">НАЧНЁМ С ТВОЕГО АВТОМОБИЛЯ</p><h2 id="estimate-title">От фотографии<br>к стоимости.</h2></div><p class="heading-description">Загрузи фото, добавь пару деталей.<br>Остальное мы посчитаем.</p></div>
+      <div class="estimate-card">
+        <div class="photo-pane">
+          <div class="pane-heading"><span class="step-number">01</span><h3>Фотография</h3><span class="step-note">Лучше спереди</span></div>
+          <div class="dropzone" id="dropzone">
+            <input type="file" id="photo-input" accept="image/jpeg,image/png,image/webp" aria-label="Загрузить фотографию автомобиля" aria-describedby="photo-help paste-help photo-error">
+            <div class="upload-placeholder" id="upload-placeholder"><div class="upload-icon"><svg class="icon"><use href="#i-photo"/></svg><span>+</span></div><strong>Твоя машина в кадре</strong><span>Перетащи фото, выбери файл или вставь из буфера</span><span class="upload-link">Выбрать фотографию <svg class="icon"><use href="#i-upload"/></svg></span><small>JPG, PNG или WebP · до 15 МБ</small></div>
+            <div class="photo-preview" id="photo-preview" hidden><img id="preview-image" alt="Загруженная фотография автомобиля"><span class="photo-badge"><svg class="icon"><use href="#i-check"/></svg> Фото загружено</span></div>
+            <button type="button" id="clear-photo" class="icon-button clear-photo" aria-label="Удалить фотографию" hidden><svg class="icon"><use href="#i-close"/></svg></button>
+          </div>
+          <div class="photo-toolbar"><button type="button" id="paste-photo" class="paste-photo-button"><svg class="icon"><use href="#i-clipboard"/></svg><span>Вставить фото</span></button><p id="paste-help" class="paste-help">Или нажми <kbd>⌘V</kbd> / <kbd>Ctrl+V</kbd></p></div>
+          <p class="field-error" id="photo-error" role="alert"></p>
+          <p class="photo-help" id="photo-help"><svg class="icon"><use href="#i-info"/></svg> Один автомобиль, целиком в кадре. Фото спереди или в три четверти подходит лучше всего.</p>
+          <button type="button" class="sample-link" id="sample-button" hidden>Нет фото под рукой? <span>Попробуй на примере ↗</span></button>
+        </div>
+        <div class="details-pane">
+          <div class="pane-heading"><span class="step-number">02</span><h3>Пара деталей</h3></div>
+          <form id="vehicle-form" novalidate>
+            <div class="field"><label for="year-input">Год выпуска</label><div class="input-wrap"><input id="year-input" name="year" type="text" inputmode="numeric" maxlength="4" placeholder="Например, 2017" autocomplete="off" aria-describedby="year-error"><span class="input-suffix">год</span></div><p class="field-error" id="year-error"></p></div>
+            <div class="field"><label for="mileage-input">Пробег</label><div class="input-wrap"><input id="mileage-input" name="mileage" type="text" inputmode="decimal" maxlength="12" placeholder="85 000" autocomplete="off" aria-describedby="mileage-error"><span class="input-suffix">км</span></div><p class="field-error" id="mileage-error"></p></div>
+            <div class="what-next"><span class="small-spark"><svg class="icon"><use href="#i-spark"/></svg></span><p>Сначала распознаем автомобиль.<br><strong>Ты сможешь проверить и изменить результат.</strong></p></div>
+            <button class="button primary submit-button" id="recognize-button" type="submit"><span>Распознать автомобиль</span><svg class="icon"><use href="#i-arrow"/></svg></button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite">Фото обрабатывается на твоём компьютере.</p>
+          </form>
+        </div>
+      </div>
+
+      <section class="recognition-card" id="recognition-panel" aria-labelledby="recognition-title" hidden>
+        <div class="recognition-heading"><div><p class="eyebrow">ЕЩЁ ОДИН МОМЕНТ</p><h3 id="recognition-title">Всё верно?</h3><p>Проверь, что мы увидели. Любую характеристику можно изменить.</p></div><div class="recognition-preview"><img id="prepared-image" alt="Автомобиль после подготовки фотографии"></div></div>
+        <div class="recognition-confidence" id="recognition-confidence"></div>
+        <div class="recognition-fields">
+          <div class="field model-field"><label for="model-input">Модель автомобиля</label><div class="input-wrap"><input id="model-input" type="text" list="model-options" placeholder="Начни вводить название" autocomplete="off" spellcheck="false" aria-describedby="model-help"><svg class="icon select-chevron"><use href="#i-chevron"/></svg></div><datalist id="model-options"></datalist><p class="field-hint" id="model-help">Можно выбрать другую модель из списка.</p></div>
+          <div class="field"><label for="color-select">Цвет</label><div class="input-wrap"><select id="color-select"></select><svg class="icon select-chevron"><use href="#i-chevron"/></svg></div></div>
+          <div class="field"><label for="body-select">Тип кузова</label><div class="input-wrap"><select id="body-select"></select><svg class="icon select-chevron"><use href="#i-chevron"/></svg></div></div>
+        </div>
+        <div class="alternative-models" id="alternative-models"></div>
+        <div class="recognition-actions"><p id="review-error" class="field-error" role="alert"></p><button type="button" class="button primary" id="estimate-button"><span>Рассчитать стоимость</span><svg class="icon"><use href="#i-arrow"/></svg></button></div>
+      </section>
+      <p class="market-note"><svg class="icon"><use href="#i-info"/></svg><span>Оценка основана на данных рынка Великобритании с переводом в рубли. География и особенности рынка влияют на реальную цену.</span></p>
+    </section>
+
+    <section id="results" class="results-section section-shell" aria-labelledby="results-title" aria-live="polite" hidden></section>
+
+    <section class="possibilities-section section-shell" id="possibilities" aria-labelledby="possibilities-title">
+      <div class="section-heading"><div><p class="eyebrow">ВСЯ КАРТИНА НА ОДНОЙ СТРАНИЦЕ</p><h2 id="possibilities-title">Цена — только начало.</h2></div><p class="heading-description">Понятные цифры.<br>Больше смысла за каждой из них.</p></div>
+      <div class="feature-grid">
+        <article class="feature-card"><div class="feature-visual feature-price"><div class="decorative-range"><span></span><span></span><span></span><i></i></div><span class="feature-visual-label">ОТ ДИАПАЗОНА К ПОНИМАНИЮ</span></div><h3>Стоимость с ориентиром.</h3><p>Оценка и диапазон цены, чтобы видеть возможный разброс, а не одну точную на вид цифру.</p></article>
+        <article class="feature-card"><div class="feature-visual feature-trend"><svg viewBox="0 0 280 120" aria-hidden="true"><defs><linearGradient id="feature-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0071e3" stop-opacity=".2"/><stop offset="1" stop-color="#0071e3" stop-opacity="0"/></linearGradient></defs><path d="M15 24C55 20 62 50 106 54S167 66 196 78 246 85 265 94V115H15Z" fill="url(#feature-fill)"/><path d="M15 24C55 20 62 50 106 54S167 66 196 78 246 85 265 94" stroke="#0071e3" stroke-width="3" fill="none"/><circle cx="106" cy="54" r="6" fill="#0071e3" stroke="white" stroke-width="3"/></svg><span class="feature-visual-label">СЕГОДНЯ И НЕСКОЛЬКО ЛЕТ ВПЕРЁД</span></div><h3>Время в перспективе.</h3><p>Посмотри, как возраст и твой темп пробега могут повлиять на стоимость в ближайшие три года.</p></article>
+        <article class="feature-card"><div class="feature-visual feature-details"><div class="decorative-swatches"><i></i><i></i><i></i><i></i><i></i></div><span class="feature-visual-label">ДЕТАЛИ, КОТОРЫЕ ИМЕЮТ ЗНАЧЕНИЕ</span></div><h3>У каждой детали свой вес.</h3><p>Влияние цвета и пробега, похожие объявления и история модели — в удобных графиках.</p></article>
+      </div>
+    </section>
+
+    <section class="method-section section-shell" id="method" aria-labelledby="method-title">
+      <div class="method-intro"><p class="eyebrow">ПОНЯТНО, КАК ЭТО РАБОТАЕТ</p><h2 id="method-title">За оценкой — данные.</h2><p>Две модели работают вместе: одна видит автомобиль,<br class="desktop-break"> другая сопоставляет его характеристики с рынком.</p></div>
+      <div class="data-stats"><div><strong id="stat-ads">214 295</strong><span>объявлений в обучении</span></div><div><strong id="stat-images">27 214</strong><span>фотографий автомобилей</span></div><div><strong id="stat-models">85</strong><span>моделей для распознавания</span></div></div>
+      <div class="method-steps"><article><span>01</span><h3>Видим автомобиль</h3><p>Удаляем фон и определяем модель, цвет и кузов по фотографии.</p></article><article><span>02</span><h3>Сопоставляем данные</h3><p>Учитываем год, пробег, характеристики и историческую цену новой машины.</p></article><article><span>03</span><h3>Показываем картину</h3><p>Рассчитываем цену, диапазон и аналитику с учётом выбранных характеристик.</p></article></div>
+      <div class="faq-list"><details><summary>Какие фотографии подходят лучше всего?<svg class="icon"><use href="#i-chevron"/></svg></summary><p>Загрузи чёткое фото одного автомобиля целиком, желательно спереди. Нейросеть обучалась преимущественно на таком ракурсе. Она выбирает из ограниченного набора моделей, поэтому результат всегда можно исправить вручную.</p></details><details><summary>Что означает цена в рублях?<svg class="icon"><use href="#i-chevron"/></svg></summary><p>Исходные объявления относятся к Великобритании за 2018–2021 годы. Их цены приведены к уровню 2026 года по индексу из исходного проекта и переведены из фунтов по курсу ЦБ. Для оценки российского рынка нужны соответствующие данные. Состояние, ДТП и комплектация по фотографии не определяются.</p></details><details><summary>Как долго хранится фотография?<svg class="icon"><use href="#i-chevron"/></svg></summary><p>У приложения нет аккаунтов и истории загрузок. После распознавания исходное фото не сохраняется в проекте. В памяти остаются только результаты распознавания для текущей сессии; они очищаются через 30 минут или при начале новой оценки.</p></details></div>
+      <p class="method-footnote">Учебный проект на основе <a href="https://deepvisualmarketing.github.io/" target="_blank" rel="noopener noreferrer">DVM-CAR</a>. Оценка служит ориентиром и не является оценочным заключением. Точность на тестовой выборке не гарантирует такую же точность на новых фотографиях.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell"><a class="wordmark" href="#top">avto<span>.</span></a><span>Больше ясности. Меньше догадок.</span><a href="https://github.com/Shyrup4ik/ML_car" target="_blank" rel="noopener noreferrer">На основе ML_car ↗</a></footer>
+  <div id="chart-tooltip" class="chart-tooltip" role="tooltip" hidden></div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><div class="noscript-message">Для загрузки фото и расчёта стоимости включи JavaScript в браузере.</div></noscript>
+</body>
+</html>

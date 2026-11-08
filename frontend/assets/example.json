@@ -1,0 +1,9 @@
+{
+  "model": "Audi A3",
+  "year": 2017,
+  "mileage_km": 85000,
+  "source_file": "confirmed_fronts/Audi/2017/Audi$$A3$$2017$$Black$$7_3$$100$$image_0.jpg",
+  "source": "DVM-CAR, quality-checked front-view images",
+  "source_url": "https://deepvisualmarketing.github.io/",
+  "purpose": "Educational demo"
+}

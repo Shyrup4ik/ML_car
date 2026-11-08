@@ -1,0 +1,10 @@
+{
+  "tool": "image_gen (built-in)",
+  "transparent_background": true,
+  "asset_path": "frontend/assets/hero-car.png",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "prompt": "Use case: product-mockup. Asset type: a premium automotive website hero image, the vehicle image only, isolated on a truly transparent background. Primary request: create an elegant photorealistic studio product photograph of a realistic silver luxury sports sedan, replacing a visibly distorted hand-drawn SVG car. The final image must look like high-end automotive product photography, not an illustration, cartoon, low-poly model, or toy. Subject: one unbranded silver metallic modern four-door sports sedan, restrained and sophisticated proportions, clean flowing bodywork, realistic slim LED lights, dark glass, beautiful detailed alloy wheels. Composition: full vehicle in front three-quarter view, nose pointing toward the left side of the image, passenger side extending to the right; camera around headlight height, 70 mm lens look with natural correct perspective and no wide-angle distortion. Keep the entire car and all visible wheels in frame, with generous transparent padding, landscape 3:2 canvas, vehicle occupying about 80 percent of the image width, centered. Lighting: large soft studio lights, subtle realistic reflections on silver paint, refined gentle contrast, clean product presentation that will sit on a very light cool-gray website background. Small soft natural contact shadow beneath the tires fading into alpha; genuinely transparent everywhere around the car, no white rectangle, no studio floor plane. Geometry must be mechanically believable: exactly four wheels in total with only the naturally visible wheels shown, consistent wheelbase, round wheels in correct perspective, no duplicate or floating wheels, no bulging wheel artifacts, no warped windows or body panels. No logos, letters, text, license plate text, brand badges, watermark, UI elements, scenery, people, or extra objects."
+}
